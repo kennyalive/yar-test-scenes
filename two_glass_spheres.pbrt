@@ -1,0 +1,36 @@
+LookAt 1.5 0.5 6   0 1 0  0 1 0
+#LookAt 2 5 7   0 0.5 0  0 1 0
+
+Camera "perspective" "float fov" [30 ]
+Film "image" "integer xresolution" [1200 ] "integer yresolution" [1200 ] "string filename" "two_glass_spheres.exr"
+Integrator "path" "integer maxdepth" 32
+Sampler "stratified" "integer xsamples" 4 "integer ysamples" 4 "bool jitter" ["true"]
+PixelFilter "box"
+
+WorldBegin
+
+AttributeBegin
+    AreaLightSource "diffuse" "color L" [15 12 9]
+    Shape "trianglemesh" "point P" [-1 5 -1  1 5 -1  1 5 1  -1 5 1] "integer indices" [0 1 2 0 2 3]
+AttributeEnd
+
+AttributeBegin
+    Texture "grid-tex" "color" "imagemap" "string filename" "textures/uv_grid.png" "float uscale" [4] "float vscale" [4]
+	Material "matte" "texture Kd" "grid-tex"
+    Shape "trianglemesh"  "integer indices" [0 2 1 0 3 2 ] 
+	"point P" [-10 0 -10   10 0 -10   10 0 10   -10 0 10 ] "float st" [ 0 0  1 0  1 1  0 1]
+AttributeEnd
+
+AttributeBegin
+    Translate 0 1 1
+    Material "glass"
+    Shape "sphere"
+AttributeEnd
+
+AttributeBegin
+   Translate 0.5 1 -1
+   Material "glass"
+   Shape "sphere"
+AttributeEnd
+
+WorldEnd
