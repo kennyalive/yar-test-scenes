@@ -1,0 +1,33 @@
+
+LookAt 10 0.5 0   0 0.2 0   0 1 0
+#LookAt 0.508772 0.805702 -5.108036  0.121880 0.635625 -6.014345  0.042302 0.978544 -0.201688
+
+Camera "perspective" "float fov" [30 ]
+Film "image" "integer xresolution" [960 ] "integer yresolution" [720 ] "string filename" "texture_test.exr"
+Integrator "path" "integer maxdepth" 4
+Sampler "stratified" "integer xsamples" 4 "integer ysamples" 4 "bool jitter" "false"
+PixelFilter "box"
+
+WorldBegin
+MakeNamedMaterial "TestWall" "string type" [ "mirror" ] "color Kr" [ .8 .8 .8 ]
+
+LightSource "distant" "point from" [10 10 0 ] "point to" [0 0 0 ]
+    "color L" [3.141593 3.141593 3.141593 ] 
+
+AttributeBegin
+	Texture "lines-tex" "color" "imagemap" "string filename" "textures/lines.png"
+		"float uscale" [100] "float vscale" [100]
+
+	Material "matte" "texture Kd" "lines-tex"
+
+    Shape "trianglemesh"  "integer indices" [0 2 1 0 3 2 ] 
+	"point P" [-100 -1 -100 400 -1 -100 400 -1 400 -100 -1 400 ] 
+        "float uv" [ 0 0 1 0 0 1 1 1]
+
+	NamedMaterial "TestWall" 
+	#Shape "trianglemesh"  "integer indices" [0 1 2 0 2 3 ]
+	#	"point P" [-5 400 -100  -5 400 400   -5 -100 400   -5 -100 -100] 
+    #    "float uv" [ 0 0 1 0 0 1 1 1]
+AttributeEnd
+
+WorldEnd

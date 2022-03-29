@@ -1,0 +1,41 @@
+LookAt 0 -5 1.5  0 5 1.0   0 0 1
+Camera "perspective" "float fov" [30 ]
+Film "image" "integer xresolution" [960 ] "integer yresolution" [720 ] "string filename" "mirror_test.exr"
+Integrator "path" "integer maxdepth" 4
+Sampler "stratified" "integer xsamples" 2 "integer ysamples" 2
+PixelFilter "box"
+
+WorldBegin
+LightSource "distant" "point from" [0 0 10] "point to" [0 10 0] "color L" [3.141593 3.141593 3.141593 ] 
+
+MakeNamedMaterial "Mirror" "string type" [ "mirror" ] "color Kr" [ .6 .99 .99 ]
+#MakeNamedMaterial "Mirror" "string type" [ "mirror" ] "color Kr" [ 1 1 1 ]
+
+Texture "lines-tex" "color" "imagemap" "string filename" "textures/lines.png"
+    "float uscale" [2] "float vscale" [8]
+
+MakeNamedMaterial "Image" "string type" [ "matte" ] "texture Kd" "lines-tex"
+
+AttributeBegin
+    NamedMaterial "Image" 
+    Translate 0 0 0
+    Shape "trianglemesh"  "integer indices" [0 1 2 0 2 3] 
+        "point P" [-10 -500 0  10 -500 0  10 15 0  -10 15 0] "float uv" [0 0  1 0  1 1  0 1]
+AttributeEnd
+
+AttributeBegin
+    NamedMaterial "Mirror" 
+    Translate 0 15 0
+    Shape "trianglemesh"  "integer indices" [0 1 2 0 2 3] 
+        "point P" [-10 0 0  10 0 0  10 0 20  -10 0 20] "float uv" [0 0  1 0  1 1  0 1]
+AttributeEnd
+
+# real geometry to match mirrored goemetry for comparision
+AttributeBegin
+    NamedMaterial "Image" 
+    Translate 0 0 0
+  #  Shape "trianglemesh"  "integer indices" [0 1 2 0 2 3] 
+  #      "point P" [-10 530 0  -10 15 0   10 15 0   10 530 0] "float uv" [0 0  0 1  1 1  1 0]
+AttributeEnd
+
+WorldEnd
