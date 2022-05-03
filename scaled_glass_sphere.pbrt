@@ -1,7 +1,7 @@
 LookAt 2.5 4.5 6   0 0.8 0  0 1 0
 Camera "perspective" "float fov" [30 ]
 Film "image" "integer xresolution" [1200 ] "integer yresolution" [1200 ] "string filename" "scaled_glass_sphere.exr"
-Integrator "path" "integer maxdepth" 15
+Integrator "path" "integer maxdepth" 15 "float rrthreshold" 0
 Sampler "stratified" "integer xsamples" 4 "integer ysamples" 4 "bool jitter" ["true"]
 PixelFilter "box"
 
