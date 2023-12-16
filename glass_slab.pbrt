@@ -25,7 +25,7 @@ AttributeBegin
 AttributeEnd
 
 ObjectBegin "cube-face"
-    Material "glass"
+    Material "glass" "float uroughness" .0005 "float vroughness" .0005
     Shape "trianglemesh"  "integer indices" [ 0 1 2  0 2 3] "point P" [ -1 0 -1  -1 0 1  1 0 1  1 0 -1 ]
 ObjectEnd
 
