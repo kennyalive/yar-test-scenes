@@ -26,6 +26,9 @@ AttributeEnd
 
 ObjectBegin "cube-face"
     Material "glass" "float uroughness" .0005 "float vroughness" .0005
+                     "color Kr" [1 1 1] "color Kt" [1 1 1]
+                     #"bool remaproughness" ["false"] 
+
     Shape "trianglemesh"  "integer indices" [ 0 1 2  0 2 3] "point P" [ -1 0 -1  -1 0 1  1 0 1  1 0 -1 ]
 ObjectEnd
 
