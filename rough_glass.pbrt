@@ -1,6 +1,4 @@
-
-#LookAt 3.0 4.5 8   0 0.8 0  0 1 0
-LookAt 0.073805 4.283913 -3.776410  0.064314 3.536217 -3.112394  -0.010687 0.664065 0.747639
+LookAt 0.073805 4.283913 -3.776411  0.064314 3.536238 -3.112413  0.000000 1.000000 0.000000
 
 Camera "perspective" "float fov" [30 ]
 Film "image" "integer xresolution" [1200 ] "integer yresolution" [1200 ] "string filename" "rough_glass.exr"
