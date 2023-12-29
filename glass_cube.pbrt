@@ -22,52 +22,10 @@ AttributeBegin
 	"point P" [-10 0 -10   10 0 -10   10 0 10   -10 0 10 ] "float st" [ 0 0  1 0  1 1  0 1]
 AttributeEnd
 
-ObjectBegin "cube-face"
+AttributeBegin
+    Translate 0 1.1 0
     Material "glass"
-    Shape "trianglemesh"  "integer indices" [ 0 1 2  0 2 3] "point P" [ -1 0 -1  -1 0 1  1 0 1  1 0 -1 ]
-ObjectEnd
-
-Translate 0 1.1 0
-
-#top
-AttributeBegin
-Translate 0 1 0
-ObjectInstance "cube-face"
-AttributeEnd
-
-#bottom
-AttributeBegin
-Translate 0 -1 0
-Rotate 180 1 0 0
-ObjectInstance "cube-face"
-AttributeEnd
-
-#left
-AttributeBegin
-Translate -1 0 0
-Rotate 90 0 0 1
-ObjectInstance "cube-face"
-AttributeEnd
-
-#right
-AttributeBegin
-Translate 1 0 0
-Rotate -90 0 0 1
-ObjectInstance "cube-face"
-AttributeEnd
-
-#back
-AttributeBegin
-Translate 0 0 -1
-Rotate -90 1 0 0
-ObjectInstance "cube-face"
-AttributeEnd
-
-#front
-AttributeBegin
-Translate 0 0 1
-Rotate 90 1 0 0
-ObjectInstance "cube-face"
+    Include "geometry/cube.pbrt"
 AttributeEnd
 
 WorldEnd
