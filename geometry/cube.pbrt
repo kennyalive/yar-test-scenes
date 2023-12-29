@@ -1,47 +1,40 @@
-AttributeBegin
-    Identity
-    ObjectBegin "cube-face"
-        Shape "trianglemesh"  "integer indices" [ 0 1 2  0 2 3] "point P" [ -1 0 -1  -1 0 1  1 0 1  1 0 -1 ]
-    ObjectEnd
-AttributeEnd
-
 #top
 AttributeBegin
 Translate 0 1 0
-ObjectInstance "cube-face"
+Shape "trianglemesh"  "integer indices" [ 0 1 2  0 2 3] "point P" [ -1 0 -1  -1 0 1  1 0 1  1 0 -1 ]
 AttributeEnd
 
 #bottom
 AttributeBegin
 Translate 0 -1 0
 Rotate 180 1 0 0
-ObjectInstance "cube-face"
+Shape "trianglemesh"  "integer indices" [ 0 1 2  0 2 3] "point P" [ -1 0 -1  -1 0 1  1 0 1  1 0 -1 ]
 AttributeEnd
 
 #left
 AttributeBegin
 Translate -1 0 0
 Rotate 90 0 0 1
-ObjectInstance "cube-face"
+Shape "trianglemesh"  "integer indices" [ 0 1 2  0 2 3] "point P" [ -1 0 -1  -1 0 1  1 0 1  1 0 -1 ]
 AttributeEnd
 
 #right
 AttributeBegin
 Translate 1 0 0
 Rotate -90 0 0 1
-ObjectInstance "cube-face"
+Shape "trianglemesh"  "integer indices" [ 0 1 2  0 2 3] "point P" [ -1 0 -1  -1 0 1  1 0 1  1 0 -1 ]
 AttributeEnd
 
 #back
 AttributeBegin
 Translate 0 0 -1
 Rotate -90 1 0 0
-ObjectInstance "cube-face"
+Shape "trianglemesh"  "integer indices" [ 0 1 2  0 2 3] "point P" [ -1 0 -1  -1 0 1  1 0 1  1 0 -1 ]
 AttributeEnd
 
 #front
 AttributeBegin
 Translate 0 0 1
 Rotate 90 1 0 0
-ObjectInstance "cube-face"
+Shape "trianglemesh"  "integer indices" [ 0 1 2  0 2 3] "point P" [ -1 0 -1  -1 0 1  1 0 1  1 0 -1 ]
 AttributeEnd

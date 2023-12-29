@@ -1,0 +1,85 @@
+LookAt 0.020034 9.391289 -8.514323  0.018389 8.635849 -7.859107  0.000000 1.000000 0.000000
+
+Camera "perspective" "float fov" [30 ]
+Film "image" "integer xresolution" [1600 ] "integer yresolution" [1200 ] "string filename" "rough_glass2.exr"
+Integrator "path" "integer maxdepth" 15 "float rrthreshold" 0
+Sampler "stratified" "integer xsamples" 4 "integer ysamples" 4 "bool jitter" ["true"]
+PixelFilter "box"
+
+WorldBegin
+
+AttributeBegin
+    AreaLightSource "diffuse" "color L" [4 3.2 2.4]
+    Translate 0.5 2 0.5
+    Shape "trianglemesh" "point P" [-4 8 -4  4 8 -4  4 8 4  -4 8 4] "integer indices" [0 1 2 0 2 3]
+AttributeEnd
+
+AttributeBegin
+    Translate 0 0 5.0
+    Texture "grid-tex" "color" "imagemap" "string filename" "textures/uv_grid.png" "float uscale" [4] "float vscale" [4] "bool trilinear" "true"
+    Material "matte" "texture Kd" "grid-tex"
+    Shape "trianglemesh"  "integer indices" [0 2 1 0 3 2 ] 
+    "point P" [-10 0 -10   10 0 -10   10 0 10   -10 0 10 ] "float st" [ 0 0  1 0  1 1  0 1]
+AttributeEnd
+
+# Row 0
+AttributeBegin
+    Translate -2.5 0.5 2.5
+    Scale 1 0.05 1
+    Material "glass" "float uroughness" .03 "float vroughness" .03
+    Include "geometry/cube.pbrt"
+AttributeEnd
+AttributeBegin
+    Translate 0 0.5 2.5
+    Scale 1 0.05 1
+    Material "glass" "float uroughness" .08 "float vroughness" .08
+    Include "geometry/cube.pbrt"
+AttributeEnd
+AttributeBegin
+    Translate 2.5 0.5 2.5
+    Scale 1 0.05 1
+    Material "glass" "float uroughness" .2 "float vroughness" .2
+    Include "geometry/cube.pbrt"
+AttributeEnd
+
+# Row 1
+AttributeBegin
+    Translate -2.5 0.5 0
+    Scale 1 0.05 1
+    Material "glass" "float uroughness" .001 "float vroughness" .001
+    Include "geometry/cube.pbrt"
+AttributeEnd
+AttributeBegin
+    Translate 0 0.5 0
+    Scale 1 0.05 1
+    Material "glass" "float uroughness" .005 "float vroughness" .005
+    Include "geometry/cube.pbrt"
+AttributeEnd
+AttributeBegin
+    Translate 2.5 0.5 0
+    Scale 1 0.05 1
+    Material "glass" "float uroughness" .02 "float vroughness" .02
+    Include "geometry/cube.pbrt"
+AttributeEnd
+
+# Row 2
+AttributeBegin
+    Translate -2.5 0.5 -2.5
+    Scale 1 0.05 1
+    Material "glass"
+    Include "geometry/cube.pbrt"
+AttributeEnd
+AttributeBegin
+    Translate 0 0.5 -2.5
+    Scale 1 0.05 1
+    Material "glass" "float uroughness" .01047 "float vroughness" 0.01047 "bool remaproughness" ["false"] # alpha here ~= 0.0002 roughness
+    Include "geometry/cube.pbrt"
+AttributeEnd
+AttributeBegin
+    Translate 2.5 0.5 -2.5
+    Scale 1 0.05 1
+    Material "glass" "float uroughness" .02756 "float vroughness" .02756 "bool remaproughness" ["false"] # alpha here ~= 0.0005 roughness
+    Include "geometry/cube.pbrt"
+AttributeEnd
+
+WorldEnd
