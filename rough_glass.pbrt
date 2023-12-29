@@ -3,7 +3,7 @@
 LookAt 0.073805 4.283913 -3.776410  0.064314 3.536217 -3.112394  -0.010687 0.664065 0.747639
 
 Camera "perspective" "float fov" [30 ]
-Film "image" "integer xresolution" [1200 ] "integer yresolution" [1200 ] "string filename" "glass_slab.exr"
+Film "image" "integer xresolution" [1200 ] "integer yresolution" [1200 ] "string filename" "rough_glass.exr"
 Integrator "path" "integer maxdepth" 15 "float rrthreshold" 0
 Sampler "stratified" "integer xsamples" 4 "integer ysamples" 4 "bool jitter" ["true"]
 PixelFilter "box"
