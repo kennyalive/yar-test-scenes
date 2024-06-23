@@ -1,0 +1,30 @@
+Film "image"
+    "integer xresolution" 1600 "integer yresolution" 850
+    "string filename" "tree.exr"
+    "float maxsampleluminance" 10
+    "float scale" 5
+
+Scale -1 1 1
+LookAt 7.220561 4.274576 -27.891628  8.180847 4.075867 -28.087530  0.000000 1.000000 0.000000
+Camera "perspective" "float fov" 45
+
+Sampler "stratified" "integer xsamples" 4 "integer ysamples" 4
+Integrator "path"
+
+WorldBegin
+
+AttributeBegin
+Rotate -10 0 0 1
+Rotate -160 0 1 0
+Rotate -90 1 0 0
+LightSource "infinite" "string mapname" "textures/sky.exr"
+AttributeEnd
+
+AttributeBegin
+Translate 10 -4 -30
+Rotate -172 0 1 0
+Scale .01 .01 .01
+Material "translucent" "color Kd" [0.0 0.0 0.0] "rgb reflect" [ 0 0 0 ]  "rgb transmit" [ 1 1 1 ] 
+Shape "plymesh" "string filename" "geometry/tree.ply"
+AttributeEnd
+WorldEnd
