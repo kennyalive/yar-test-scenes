@@ -1,0 +1,32 @@
+Film "image"
+    "integer xresolution" 1600 "integer yresolution" 850
+    "string filename" "tree2.exr"
+    "float maxsampleluminance" 10
+    "float scale" 5
+
+Scale -1 1 1
+LookAt 44.139454 8.876293 -26.659903  45.049664 8.560011 -26.392536  0.000000 1.000000 0.000000
+Camera "perspective" "float fov" 45
+
+Sampler "stratified" "integer xsamples" 4 "integer ysamples" 4
+Integrator "path"
+
+WorldBegin
+
+AttributeBegin
+Rotate -10 0 0 1
+Rotate -160 0 1 0
+Rotate -90 1 0 0
+LightSource "infinite" "string mapname" "textures/sky.exr"
+AttributeEnd
+
+AttributeBegin
+Translate 45 0 -30
+Rotate -72 0 1 0
+Scale .01 .01 .01
+Texture "leaf" "spectrum" "imagemap" "string filename" [ "textures/leaf.png" ] 
+Texture "leaf_alpha" "float" "imagemap" "string filename" [ "textures/leaf.png" ] 
+Material "translucent" "texture Kd" [ "leaf" ] "rgb reflect" [ 0 0 0 ] "rgb transmit" [ 1 1 1 ]
+Shape "plymesh" "string filename" "geometry/tree.ply" "texture alpha" "leaf_alpha" 
+AttributeEnd
+WorldEnd
