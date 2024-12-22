@@ -1,0 +1,32 @@
+# Many black area due to direct lighting.
+# In some areas the geometry normals allow to lit the surface,
+# but interpolated shading normals bend the surface away from light.
+# Replace integrator with "path" to check how it changes result.
+
+Film "image"
+    "integer xresolution" 1600 "integer yresolution" 850
+    "string filename" "tree3.exr"
+    "float maxsampleluminance" 10
+    "float scale" 5
+
+Scale -1 1 1
+LookAt 44.688442 8.829230 -26.715361  45.677776 8.727509 -26.611034  0.000000 1.000000 0.000000
+Camera "perspective" "float fov" 45
+Sampler "stratified" "integer xsamples" 4 "integer ysamples" 4
+Integrator "directlighting"
+
+WorldBegin
+
+LightSource "distant" 
+            "point from" [ 44.139454 8.876293 -26.659903 ] 
+            "point to" [ 45.049664 8.560011 -26.392536 ] 
+            "rgb L" [ 2.4314575195 1.7676141262 1.2205084562 ] 
+
+AttributeBegin
+Translate 45 0 -30
+Rotate -72 0 1 0
+Scale .01 .01 .01
+Material "matte" "rgb Kd" [ 0.5 .5 .5 ]
+Shape "plymesh" "string filename" "geometry/tree.ply"
+AttributeEnd
+WorldEnd
