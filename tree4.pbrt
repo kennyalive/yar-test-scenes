@@ -15,10 +15,14 @@ Integrator "path"
 WorldBegin
 
 AttributeBegin
+# Just transform light direction somehow to test it's accounted for
 Rotate -10 0 0 1
 Rotate -160 0 1 0
 Rotate -90 1 0 0
-LightSource "infinite" "string mapname" "textures/sky.exr"
+LightSource "distant" 
+            "point from" [ 0 100 0 ] 
+            "point to" [ 0 0 0 ] 
+            "rgb L" [ 2.4314575195 1.7676141262 1.2205084562 ] 
 AttributeEnd
 
 AttributeBegin
