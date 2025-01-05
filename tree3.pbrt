@@ -1,6 +1,5 @@
-# Many black area due to direct lighting.
-# In some areas the geometry normals allow to lit the surface,
-# but interpolated shading normals bend the surface away from light.
+# Test leaves with direct lighting. Many black areas due to direct lighting.
+# In some areas the geometry normals allow to lit the surface, but interpolated shading normals bend the surface away from light.
 # Replace integrator with "path" to check how it changes result.
 
 Film "image"

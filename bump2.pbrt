@@ -1,0 +1,30 @@
+# Top-down view on the bump mapped surface. The ligth also has top-down direction
+LookAt 0 5.0 0   0 0 0   0 0 1
+Camera "perspective" "float fov" [40]
+PixelFilter "box"
+Film "image" "integer xresolution" [800] "integer yresolution" [800] "string filename" "bump2.exr"
+Sampler "stratified" "integer xsamples" 8 "integer ysamples" 8
+Integrator "directlighting"
+
+WorldBegin
+
+LightSource "distant" 
+        "point from" [0 100 0 ] 
+        "point to" [ 0 0 0 ] 
+        "rgb L" [ 2.4314575195 1.7676141262 1.2205084562 ] 
+
+Texture "bump-base" "float" "imagemap"
+    "string filename" "textures/buildingblock.png"
+    "float uscale" 60 "float vscale" 60
+
+Texture "bump" "float" "scale"
+    "texture tex1" "bump-base"
+    "float  tex2" [.25]
+
+Material "matte" "rgb Kd" [ 0.5 .5 .5 ] "texture bumpmap" [ "bump" ]
+
+Shape "trianglemesh"
+    "integer indices" [0 1 2  ]
+    "point P" [ -100 0 -100  100 0 -100   100 0 100 ]
+
+WorldEnd
