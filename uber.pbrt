@@ -1,0 +1,32 @@
+LookAt 2.5 4.5 6   0 0.8 0  0 1 0
+Camera "perspective" "float fov" [30 ]
+Film "image" "integer xresolution" [1200 ] "integer yresolution" [1200 ] "string filename" "uber.exr"
+Integrator "path" "integer maxdepth" 15 "float rrthreshold" 0
+Sampler "stratified" "integer xsamples" 4 "integer ysamples" 4 "bool jitter" ["true"]
+PixelFilter "box"
+
+WorldBegin
+
+AttributeBegin
+    AreaLightSource "diffuse" "color L" [15.258818626403809 12.083925247192383 9.589462280273438]
+    Shape "trianglemesh" "point P" [-1 5 -1  1 5 -1  1 5 1  -1 5 1] "integer indices" [0 1 2 0 2 3]
+AttributeEnd
+
+AttributeBegin
+    Texture "grid-tex" "color" "imagemap" "string filename" "textures/uv_grid.png" "float uscale" [4] "float vscale" [4]
+	Material "matte" "texture Kd" "grid-tex"
+    Shape "trianglemesh"  "integer indices" [0 2 1 0 3 2 ] 
+	"point P" [-10 0 -10   10 0 -10   10 0 10   -10 0 10 ] "float st" [ 0 0  1 0  1 1  0 1]
+AttributeEnd
+
+AttributeBegin
+    Material "uber" 
+        "rgb Kd" [ 0.5 0.5 0.8 ] 
+        "rgb Kr" [ 0 0.4 0 ] 
+
+    Translate 0 1 0
+    Scale 0.5 1 2.0
+    Shape "sphere"
+AttributeEnd
+
+WorldEnd
