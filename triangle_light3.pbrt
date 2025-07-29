@@ -1,0 +1,33 @@
+Film "image" "integer xresolution" 768 "integer yresolution" 512 "string filename" "triangle-light3.exr"
+Sampler "stratified" "integer xsamples" 2 "integer ysamples" 2
+Integrator "path"
+LookAt 0 1.5 3   0 0 0   0 1 0
+Camera "perspective" "float fov" 45
+
+WorldBegin
+
+# Materials
+MakeNamedMaterial "floor" 
+        "string type" "metal"
+        "float roughness" [ 0.001 ] 
+        "rgb eta" [ 0.21221054 0.91804785 1.1000715 ] 
+        "rgb k" [ 3.9132357 2.4519274 2.1321275 ] 
+
+MakeNamedMaterial "light" "string type" "matte" "rgb Kd" [1 1 1]
+
+AttributeBegin
+  NamedMaterial "floor"
+  Shape "trianglemesh"
+    "point P" [ -2 0 -2  2 0 -2  2 0 2  -2 0 2 ]
+    "integer indices" [ 0 1 2  0 2 3 ]
+AttributeEnd
+
+AttributeBegin
+  AreaLightSource "diffuse" "rgb L" [40 40 40]
+  NamedMaterial "light"
+  Shape "trianglemesh"
+    "point P" [ -1.5 0.2 -0.5  1.5 0.2 -0.5  1.2 0.2 0.2  -1.2 0.2 0.2]
+    "integer indices" [ 0 1 2  0 2 3]
+AttributeEnd
+
+WorldEnd
